@@ -1,8 +1,7 @@
 const checkStringLength = (inputString, maxLength) => {
   if (inputString.length <= maxLength) {
     return true;
-  }
-  else {
+  } else {
     return false;
   }
 };
@@ -19,15 +18,20 @@ const checkPalindrome = (inputString) => {
   return string === newString;
 };
 
-const numbers = (input) => {
-  let string = input.toString();
+const extractNumbers = (inputValue) => {
+  let string;
+  if (inputValue === 'number'){
+    string = String(inputValue);
+  } else{
+    string = inputValue;
+  }
   let result = '';
 
-  for (let char of string){
-    if (!Number.isNaN(parseInt(char))){
+  for (const char of string){
+    if (!Number.parseInt(char, 10)){
       result += char;
     }
   }
 
-  return result ? parseInt(result) : NaN;
+  return result ? Number(result) : NaN;
 };
