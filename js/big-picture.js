@@ -1,5 +1,5 @@
 import { closeOnEscKeyDown } from './util.js';
-import { COMMENTS_STEP } from './const.js';
+import { COMMENTS_STEP } from './consts.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImage = bigPicture.querySelector('.big-picture__img img');
@@ -104,4 +104,3 @@ const showBigPicture = (picture) => {
 };
 
 export {showBigPicture};
-
