@@ -1,5 +1,5 @@
 import { closeOnEscKeyDown } from './util.js';
-import { COMMENTS_STEP } from './const.js';
+import { COMMENTS_STEP } from './consts.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImage = bigPicture.querySelector('.big-picture__img img');
@@ -23,7 +23,8 @@ const renderComments = () => {
 
   if (currentComments.length <= COMMENTS_STEP || commentsCount >= currentComments.length) {
     loadComments.classList.add('hidden');
-  } else {
+  }
+  else {
     loadComments.classList.remove('hidden');
   }
 
@@ -104,4 +105,3 @@ const showBigPicture = (picture) => {
 };
 
 export {showBigPicture};
-

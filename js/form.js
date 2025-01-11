@@ -1,5 +1,6 @@
 import { onFilterButtonChange, effectList, sliderWrapper } from './effects.js';
 import { isEscapeKey } from './util.js';
+import { buttonAdjustment } from './hashtags-pristine.js';
 
 const Zoom = {
   MIN: 25,
@@ -16,6 +17,8 @@ const minusButton = body.querySelector('.scale__control--smaller');
 const plusButton = body.querySelector('.scale__control--bigger');
 const scaleControlValue = body.querySelector('.scale__control--value');
 const imagePreview = body.querySelector('.img-upload__preview img');
+const commentsField = formUpload.querySelector('.text__description');
+
 
 const closeForm = () => {
   overlay.classList.add('hidden');
@@ -41,6 +44,15 @@ const onCloseFormEscKeyDown = (evt) => {
   }
 };
 
+const addFieldListener = (field) => {
+  field.addEventListener('focus', () => {
+    document.removeEventListener('keydown', onCloseFormEscKeyDown);
+  });
+  field.addEventListener('blur', () => {
+    document.addEventListener('keydown', onCloseFormEscKeyDown);
+  });
+};
+
 const changeImages = () => {
   const file = fileUpload.files[0];
   const fileUrl = URL.createObjectURL(file);
@@ -57,6 +69,8 @@ const onFileUploadChange = () => {
   document.addEventListener('keydown', onCloseFormEscKeyDown);
   sliderWrapper.classList.add('hidden');
   effectList.addEventListener('change', onFilterButtonChange);
+  addFieldListener(commentsField);
+  buttonAdjustment();
 };
 
 fileUpload.addEventListener('change', onFileUploadChange);
