@@ -45,7 +45,7 @@ const Avatar = {
 const createComment = (id) => ({
   id: id,
   avatar: `img/avatar-${getRandomNumber(Avatar.MIN, Avatar.MAX)}.svg`,
-  message: messages[getRandomNumber(0, messages.length-1)],
+  message: messages[getRandomNumber(0, messages.length - 1)],
   name: name[getRandomNumber(0, name.length - 1)]
 });
 
