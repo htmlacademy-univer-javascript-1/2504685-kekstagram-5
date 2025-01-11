@@ -94,9 +94,7 @@ const onFilterButtonChange = (evt) => {
   if (evtHandler === 'none') {
     sliderWrapper.classList.add('hidden');
     imagePreview.style.filter = 'none';
-  }
-
-  else {
+  } else {
     sliderWrapper.classList.remove('hidden');
     imagePreview.removeAttribute('class');
     imagePreview.classList.add(`effects__preview--${evtHandler}`);
