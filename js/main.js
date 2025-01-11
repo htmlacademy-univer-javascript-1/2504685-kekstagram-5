@@ -1,7 +1,5 @@
-import {photos} from './data.js';
-import {renderPictures} from './pictures.js';
-import './form.js';
-import './hashtags-pristine.js';
+import { getPicture } from './data.js';
+import { renderGallery } from './miniatures.js';
 
-renderPictures(photos);
 
+renderGallery (getPicture());
