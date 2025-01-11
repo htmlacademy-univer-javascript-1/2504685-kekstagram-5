@@ -16,7 +16,7 @@ const onUploadImageChange = () => {
 
     reader.addEventListener('load', () => {
       preview.src = reader.result;
-      smallImage.forEach((evt) => { evt.style.backgroundImage = `url(${reader.result})`; });
+      smallImage.forEach((evt) => { evt.style.backgroundImage = `url(${reader.result})`; })
     });
 
     reader.readAsDataURL(file);

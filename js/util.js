@@ -84,7 +84,7 @@ const debounce = (cb) => {
 };
 
 const shuffleArray = (array) => {
-  for (let indexOne = array.length - 1; indexOne  > 0; indexOne--) {
+  for (let indexOne = array.length - 1; indexOne > 0; indexOne--) {
     const indexTwo = Math.floor(Math.random() * (indexOne + 1));
     [array[indexOne], array[indexTwo]] = [array[indexTwo], array[indexOne]];
   }
