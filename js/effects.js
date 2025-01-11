@@ -108,9 +108,7 @@ const onFilterButtonChange = (evt) => {
     sliderWrapper.classList.add('hidden');
     imagePreview.style.filter = 'none';
     imagePreview.removeAttribute('class');
-  }
-
-  else {
+  } else {
     sliderWrapper.classList.remove('hidden');
     imagePreview.removeAttribute('class');
     imagePreview.classList.add(`effects__preview--${evtHandler}`);
