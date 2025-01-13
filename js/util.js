@@ -1,25 +1,4 @@
-import { Keys } from './consts.js';
-
-const getRandomNumber = (min, max) => {
-  const lower = Math.ceil(Math.min(min, max));
-  const upper = Math.floor(Math.max(min, max));
-  const result = Math.random() * (upper - lower + 1) + lower;
-
-  return Math.floor(result);
-};
-
-const createRandom = (min, max) => {
-  const number = [];
-
-  return function () {
-    let currentValue = getRandomNumber(min, max);
-    while (number.includes(currentValue)) {
-      currentValue = getRandomNumber(min, max);
-    }
-    number.push(currentValue);
-    return currentValue;
-  };
-};
+import { Keys, DELAY } from './consts.js';
 
 const isEscapeKey = (evt) => evt.key === Keys.ESC || evt.key === Keys.ESCAPE;
 
@@ -30,26 +9,6 @@ const closeOnEscKeyDown = (evt, cb) => {
 };
 
 const checkLenght = (inputString, maxLenght) => inputString.length <= maxLenght;
-
-const isPalindrom = (inputString) => {
-  let reverseString = '';
-  const newString = inputString.replaceAll(' ', '').toLowerCase();
-  for (let i = newString.length - 1; i >= 0; i--) {
-    reverseString += newString[i];
-  }
-  return (newString === reverseString);
-};
-
-const getCount = (inputParam) => {
-  const newString = inputParam.toString();
-  let number = '';
-  for (let i = 0; i < newString.length; i++){
-    if (!Number.isNaN(parseInt(newString[i], 10))) {
-      number += newString[i];
-    }
-  }
-  return parseInt(number, 10);
-};
 
 const showAlert = (message, alertShowTime) => {
   const alertContainer = document.createElement('div');
@@ -70,4 +29,25 @@ const showAlert = (message, alertShowTime) => {
   setTimeout(() => alertContainer.remove(), alertShowTime);
 };
 
-export {getRandomNumber, createRandom, checkLenght, isPalindrom, getCount, closeOnEscKeyDown, isEscapeKey, showAlert};
+const debounce = (cb) => {
+  let lastTimeout = null;
+
+  return (...args) => {
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(() => {
+      cb(...args);
+    }, DELAY);
+  };
+};
+
+const shuffleArray = (array) => {
+  for (let indexOne = array.length - 1; indexOne > 0; indexOne--) {
+    const indexTwo = Math.floor(Math.random() * (indexOne + 1));
+    [array[indexOne], array[indexTwo]] = [array[indexTwo], array[indexOne]];
+  }
+  return array;
+};
+
+export {checkLenght, closeOnEscKeyDown, isEscapeKey, showAlert, debounce, shuffleArray};
